@@ -1,0 +1,92 @@
+package com.mycompany.empregado;
+
+public class Empregado {
+    private String nome;
+    private int idade;
+    private double salario;
+
+    // Construtor
+    public Empregado(String nome, int idade, double salario) {
+        this.nome = nome;
+        this.idade = idade;
+        this.salario = salario;
+    }
+
+    // Getters e Setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    // Método para promover o empregado
+    public void promover() {
+        if (idade > 18) {
+            aumentarSalario(0.25); // Aumento de 25%
+        } else {
+            System.out.println("O empregado não pode ser promovido por ser menor de 18 anos.");
+        }
+    }
+
+    // Método para aumentar o salário
+    public void aumentarSalario(double percentual) {
+        salario += salario * percentual;
+    }
+
+    // Método para demitir o empregado
+    public void demitir(int motivo) {
+        switch (motivo) {
+            case 1:
+                System.out.println("Justa causa: Cumprir aviso prévio.");
+                break;
+            case 2:
+                double multa = salario * 0.4;
+                salario -= multa;
+                System.out.println("Decisão do empregador: Multa de 40% aplicada. Salário após multa: " + salario);
+                break;
+            case 3:
+                if (salario >= 1000 && salario <= 2000) {
+                    salario = 1500;
+                } else if (salario > 2000 && salario <= 3000) {
+                    salario = 2500;
+                } else if (salario > 3000 && salario <= 4000) {
+                    salario = 3500;
+                } else if (salario > 4000) {
+                    salario = 4000;
+                }
+                System.out.println("Aposentadoria: Salário de aposentadoria: " + salario);
+                break;
+            default:
+                System.out.println("Motivo inválido.");
+        }
+    }
+
+    // Método para fazer aniversário
+    public void fazerAniversario() {
+        idade++;
+    }
+
+    // Método toString para exibir detalhes do empregado
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Idade: " + idade + ", Salário: " + salario;
+    }
+}
